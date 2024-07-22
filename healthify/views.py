@@ -59,17 +59,17 @@ class SubmitUserDetails(APIView):
     def post(self, request):
         data = request.data
         user_details = UserDetails.objects.create(
-            full_name=data.get('fullname'),
-            age=data.get('age'),
-            gender=data.get('gender'),
-            phone_number=data.get('phoneNumber'),
-            current_medications=data.get('currentMedications'),
-            ALLERGIES=data.get('allergies'),
-            past_medical_condition=data.get('pastMedicalCondition'),
-            blood_type=data.get('bloodType'),
+            full_name=data.get('fullnameOfUser'),
+            age=data.get('ageOfUser'),
+            gender=data.get('genderOfUser'),
+            phone_number=data.get('phNoOfUser'),
+            current_medications=data.get('CurrentMedications'),
+            ALLERGIES=data.get('anyAllergies'),
+            past_medical_condition=data.get('pastMedications'),
+            blood_type=data.get('BloodGroupOfUser'),
             recent_test_details=data.get('recentTestDetails'),
-            food_type=data.get('foodType'),
-            address=data.get('address')
+            food_type=data.get('FoodPreOfUser'),
+            address=data.get('addressOfUser')
         )
         user_details.save()
         return Response({'message': 'User details submitted successfully'}, status=status.HTTP_201_CREATED)
@@ -81,16 +81,16 @@ class SubmitDoctorDetails(APIView):
     def post(self, request):
         data = request.data
         doctor_details = DoctorDetails.objects.create(
-            fullname=data.get('fullname'),
-            age=data.get('age'),
-            gender=data.get('gender'),
-            blood_type=data.get('bloodType'),
-            phone_number=data.get('phoneNumber'),
-            adhaar_number=data.get('adhaarNumber'),
-            MIDICAL_LICENCE_NO=data.get('medicalLicenceNumber'),
+            fullname=data.get('fullnameOfDoctor'),
+            age=data.get('ageOfDoctor'),
+            gender=data.get('genderOfDoctor'),
+            blood_type=data.get('bloodGroupOfDoctor'),
+            phone_number=data.get('phNoOfDoctor'),
+            adhaar_number=data.get('AdharNoOfDoctor'),
+            MIDICAL_LICENCE_NO=data.get('MedicalNumber'),
             specialization=data.get('specialization'),
-            food_type=data.get('foodType'),
-            years_of_experience=data.get('yearsOfExperience')
+            food_type=data.get('foodPreOfDoctor'),
+            years_of_experience=data.get('yoe')
         )
         doctor_details.save()
         return Response({'message': 'Doctor details submitted successfully'}, status=status.HTTP_201_CREATED)

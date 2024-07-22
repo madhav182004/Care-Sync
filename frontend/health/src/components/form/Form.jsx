@@ -5,63 +5,42 @@ import axios from 'axios';
 import './question.css';
 
 const questions = [
-    { question: 'What is your full name?', questionType: 'text' },
-    { question: 'What is your phone number?', questionType: 'text' },
-    { question: 'What is your sex?', questionType: 'options1', options: ['Male', 'Female', 'Other'] },
-    { question: 'What is your age?', questionType: 'text' },
-    { question: 'Your Blood Group?', questionType: 'text' },
-    { question: 'Do you have any allergies? If so, please write them down?', questionType: 'text' },
-    { question: 'Your current medications?', questionType: 'text' },
-    { question: 'Your past medications?', questionType: 'text' },
-    { question: 'Your recent test details?', questionType: 'text' },
-    { question: 'What is your food preference?', questionType: 'text' },
-    { question: 'What is your address?', questionType: 'text' }
+    { question: 'What is your full name?', questionType: 'text', id: 'fullnameOfUser' },
+    { question: 'What is your age?', questionType: 'text', id: 'ageOfUser' },
+    { question: 'What is your sex?', questionType: 'options1', options: ['Male', 'Female', 'Other'], id: 'genderOfUser' },
+    { question: 'What is your phone number?', questionType: 'text', id: 'phNoOfUser' },
+    { question: 'Your current medications?', questionType: 'text', id: 'CurrentMedications' },
+    { question: 'Do you have any allergies? If so, please write them down?', questionType: 'text', id: 'anyAllergies' },
+    { question: 'Your past medications?', questionType: 'text', id: 'pastMedications' },
+    { question: 'Your Blood Group?', questionType: 'text', id: 'BloodGroupOfUser' },
+    { question: 'Your recent test details?', questionType: 'text', id: 'recentTestDetails' },
+    { question: 'What is your food preference?', questionType: 'text', id: 'FoodPreOfUser' },
+    { question: 'What is your address?', questionType: 'text', id: 'addressOfUser' }
 ];
 
 const Form = () => {
     const [currentPage, setCurrentPage] = useState(0);
-    const [answers, setAnswers] = useState([]);
+    const [answers, setAnswers] = useState({});
     const navigate = useNavigate();
 
-    const handleNextQuestion = (answer) => {
-        setAnswers([...answers, answer]);
+    const handleNextQuestion = (answer, id) => {
+        setAnswers(prevAnswers => ({ ...prevAnswers, [id]: answer }));
         setCurrentPage(currentPage + 1);
     };
 
     const handleSubmit = async () => {
-        navigate('/')
-        alert('Form Submitted Successfully');
-        // const formData = {
-        //     fullname: answers[0],
-        //     age: answers[3],
-        //     gender: answers[2],
-        //     phoneNumber: answers[1],
-        //     currentMedications: answers[6],
-        //     allergies: answers[6],
-        //     pastMedicalCondition: answers[7],
-        //     bloodType: answers[4],
-        //     recentTestDetails: answers[8],
-        //     foodType: answers[9],
-        //     address: answers[10]
-        // };
-
-        // try {
-        //     const response = await axios.post('http://127.0.0.1:8000/submit_user_details/', formData, {
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         }
-        //     });
-
-        //     if (response.status === 201) {
-        //         console.log('User details submitted successfully');
-        //         navigate('/');
-        //         alert('Form submitted successfully!')
-        //     } else {
-        //         console.error('Failed to submit user details');
-        //     }
-        // } catch (error) {
-        //     console.error('Error:', error);
-        // }
+        try {
+            const response = await axios.post('http://localhost:8000/submit_user_details/', answers);
+            if (response.status === 201) {
+                alert('Details form submitted successfully👍');
+                navigate('/');
+            } else {
+                alert('Failed to submit your details.😶‍🌫️');
+            }
+        } catch (error) {
+            console.error('Error submitting user details:', error);
+            alert('An error occurred while submitting the user details.', error);
+        }
     };
 
     const handleFormSubmit = (event) => {
@@ -77,14 +56,13 @@ const Form = () => {
                         question={questions[currentPage].question}
                         questionType={questions[currentPage].questionType}
                         options={questions[currentPage].options}
-                        onNextQuestion={handleNextQuestion}
+                        onNextQuestion={(answer) => handleNextQuestion(answer, questions[currentPage].id)}
                         answers={answers}
                         currentPage={currentPage}
                     />
-                    {/* Submit button to trigger form submission */}
                 </form>
             ) : (
-                <button  onClick={handleSubmit}>Submit?</button>
+                <button onClick={handleSubmit}>Submit?</button>
             )}
         </div>
     );

@@ -6,12 +6,14 @@ const BloodHelp = () => {
   const [hasSearched, setHasSearched] = useState(false);
 
   // Filter the data based on the search query
-  const filteredData = bloodBanks.records.filter(data =>
-    data.pincode && data.pincode.toString().includes(searchQuery)
-  );
+  const filteredData = searchQuery
+    ? bloodBanks.records.filter(data =>
+        data.pincode && data.pincode.toString().includes(searchQuery)
+      )
+    : [];
 
   // Determine the data to display
-  const dataToDisplay = hasSearched ? filteredData : bloodBanks.records.slice(0, 10);
+  const dataToDisplay = hasSearched ? filteredData : bloodBanks.records.slice(0, 15);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -20,13 +22,17 @@ const BloodHelp = () => {
 
   return (
     <div className="Form">
-      <h1 className="text-center">All India Blood Bank Information</h1>
-      <input
-        type="search"
-        placeholder="Search by Pincode"
-        value={searchQuery}
-        onChange={handleSearch}
-      />
+        <div className="flex justify-center gap-20 m-5">
+            <h1 className="text-center">All India Blood Bank Information</h1>
+            <br />
+            <input
+            type="search"
+            placeholder="Search by Pincode"
+            value={searchQuery}
+            className="border-2 border-black rounded pl-6"
+            onChange={handleSearch}
+            />
+        </div>
       <hr />
       <table className="table-auto w-full">
         <thead>

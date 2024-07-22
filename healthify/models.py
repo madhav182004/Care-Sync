@@ -59,7 +59,7 @@ class UserDetails(models.Model):
         max_length=10,
         choices=GENDER
     )
-    phone_number = models.IntegerField()
+    phone_number = models.CharField(max_length=15)
     current_medications = models.TextField()
     ALLERGIES = models.TextField()
     past_medical_condition = models.TextField()
@@ -80,7 +80,7 @@ class DoctorDetails(models.Model):
     age = models.IntegerField()
     gender = models.CharField(max_length=10,choices=GENDER)
     blood_type = models.CharField(max_length=5,choices=BLOOD_GROUP_CHOICES)
-    phone_number = models.IntegerField()
+    phone_number = models.CharField(max_length=15)
     adhaar_number = models.BigIntegerField()
     MIDICAL_LICENCE_NO = models.TextField()
     specialization = models.CharField(

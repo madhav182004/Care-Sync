@@ -1,35 +1,49 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DocQuestion from './DocQuestion';
 import './docquestion.css';
-import Main from '../LandingPage/Main';
-import { Navigate } from 'react-router-dom';
+import axios from 'axios';
 
 const questions = [
-    { question: 'What is your sex?', questionType: 'options1', options: ['Male', 'Female', 'Other'] },
-    { question: 'Enter your Date of Birth', questionType: 'date' },
-    { question: 'Enter your Adhaar Card Number', questionType: 'number' },
-    { question: 'Enter Medical Licence Number', questionType: 'text' },
-    { question: 'Specialization?', questionType: 'text' },
-    { question: 'Years Of Experience', questionType: 'number' },
+    { question: 'What is your full name?', questionType: 'text', id:'fullnameOfDoctor' },
+    { question: 'Enter your Date your Age', questionType: 'number', id:'ageOfDoctor' },
+    { question: 'What is your sex?', questionType: 'options1', options: ['Male', 'Female', 'Other'], id:'genderOfDoctor' },
+    { question: 'Your Blood Group?', questionType: 'text', id:'bloodGroupOfDoctor' },
+    { question: 'Enter your Phone Number', questionType: 'number', id:'phNoOfDoctor' },
+    { question: 'Enter your Adhaar Card Number', questionType: 'number', id:'AdharNoOfDoctor' },
+    { question: 'Enter Medical Licence Number', questionType: 'text', id:'MedicalNumber' },
+    { question: 'Specialization?', questionType: 'text', id:'specialization' },
+    { question: 'What is your food preference?', questionType: 'text', id:'foodPreOfDoctor' },
+    { question: 'Years Of Experience', questionType: 'number', id:'yoe'},
 ];
 
 const DoctorForm = () => {
     const [currentPage, setCurrentPage] = useState(0);
-    const [answers, setAnswers] = useState([]);
+    const [answers, setAnswers] = useState({});
     const navigate = useNavigate();
 
-    const handleNextQuestion = (answer) => {
-        setAnswers([...answers, answer]);
+    const handleNextQuestion = (answer, id) => {
+        setAnswers(prevAnswers => ({ ...prevAnswers, [id]: answer }));
         setCurrentPage(currentPage + 1);
     };
 
-    const handleSubmit = () => {
-        console.log("All answers: ", answers);
-        navigate('/');
+    const handleSubmit = async () => {
+        try {
+            const response = await axios.post('http://localhost:8000/submit_doctor_details/', answers);
+
+            if (response.status === 201) {
+                // Navigate to the home page if the API call is successful
+                alert('Details form submitted successfully👍')
+                navigate('/');
+            } else {
+                alert('Failed to submit your details.😶‍🌫️');
+            }
+        } catch (error) {
+            console.error('Error submitting doctor details:', error);
+            alert('An error occurred while submitting the doctor details.', error);
+        }
     };
 
-    
     return (
         <div className="Form">
             {currentPage < questions.length ? (
@@ -37,19 +51,18 @@ const DoctorForm = () => {
                     question={questions[currentPage].question}
                     questionType={questions[currentPage].questionType}
                     options={questions[currentPage].options}
-                    onNextQuestion={handleNextQuestion}
+                    onNextQuestion={(answer) => handleNextQuestion(answer, questions[currentPage].id)}
                     answers={answers}
                     currentPage={currentPage}
                 />
-
             ) : (
                 <>
-                {console.log(handleSubmit())}
-                <p>page</p>
+                    <p>All questions completed!</p>
+                    <button onClick={handleSubmit}>Submit</button>
                 </>
             )}
         </div>
     );
-}
+};
 
 export default DoctorForm;
