@@ -101,12 +101,15 @@ WSGI_APPLICATION = 'HealthHQ.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+DATABASE_PASSWORD = os.environ.get('MYSQL_PASSWORD')
+
 DATABASES = {
      "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": 'caresync',
         "USER": 'root',
-        "PASSWORD": '##654(ZS@ZNM#94*?shqk0?',
+        "PASSWORD": 'Himanshu@1@5',
         "HOST": '127.0.0.1',
         "PORT": '3306'
     }
@@ -169,11 +172,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Email configuration settings
 #email configuration
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp-mail.outlook.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'healthhq247@outlook.com'
+# EMAIL_HOST_PASSWORD = 'HealthHQTeam'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'healthhq247@outlook.com'
-EMAIL_HOST_PASSWORD = 'HealthHQTeam'
-
+EMAIL_HOST_USER = 'healthhq247@gmail.com'
+EMAIL_HOST_PASSWORD = 'xdhs lhwo quhq crba'
+DEFAULT_FROM_EMAIL = 'healthhq247@gmail.com'
 ADMIN_EMAILS = ['syedzubair4unib@gmail.com','madhavmundhra221@gmail.com','himanshuks062@gmail.com','abhishekrajranchi2004@gmail.com'],

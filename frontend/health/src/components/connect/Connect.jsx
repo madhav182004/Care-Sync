@@ -1,13 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './connect.css';
 import axios from 'axios';
 
-
 export const Connect = () => {
     const [message, setMessage] = useState('');
-    
-
 
     const handleSubmitDoctorRequest = async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -37,6 +33,16 @@ export const Connect = () => {
         }
     };
 
+    useEffect(() => {
+        if (message) {
+            const timer = setTimeout(() => {
+                setMessage('');
+            }, 3000); // Clear message after 3 seconds
+
+            // Cleanup the timeout when the component is unmounted or when message changes
+            return () => clearTimeout(timer);
+        }
+    }, [message]);
 
     return (
         <div className='mainpage'>
@@ -60,7 +66,7 @@ export const Connect = () => {
                     </div>
                     <button type='submit'>SEND</button>
                 </form>
-                <h1>{message}</h1>
+                {message && <h1>{message}</h1>}
             </div>
         </div>
     );
