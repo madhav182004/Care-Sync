@@ -71,15 +71,9 @@ const Navbar = () => {
             >
               Doctors
             </Link>
-            <Link
-              to="blog"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className="hover:text-hoverColor transition-all cursor-pointer"
-            >
-              Blog
-            </Link>
+            <button>
+              <a href="/bloodHelp">Blood Help</a>
+            </button>
             <button>
               <a href="/connect">Connect</a>
             </button>

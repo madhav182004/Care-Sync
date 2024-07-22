@@ -6,12 +6,10 @@ const BloodHelp = () => {
 
   useEffect(() => {
 
-    data_to_send = {
-        
-    }
+    
 
     // Replace with your actual API endpoint
-    axios.get("http://localhost:8000/api/retrieve_data",data_to_send)
+    axios.get("http://localhost:8000/api/retrieve_data")
       .then(response => {
         setDatas(response.data);
       })
@@ -23,6 +21,7 @@ const BloodHelp = () => {
   return (
     <div className="Form">
       <h1 className="text-center">All India Blood Bank Information</h1>
+      <input type="search" placeholder="Search here" />
       <hr />
       <table className="table">
         <thead>

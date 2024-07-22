@@ -7,6 +7,7 @@ import { LoginPage } from "./components/LoginPage/LoginPage";
 import { RegisterPage } from "./components/RegisterPage/RegisterPage";
 import DoctorForm from "./components/DoctorForm/DoctorForm";
 import { Connect } from "./components/connect/Connect";
+import BloodHelp from "./components/BloodHelp/BloodHelp";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/doctorform" element={<DoctorForm />} />
       <Route path="/video" element={<Homepage />} />
       <Route path="/video/room/:roomId" element={<RoomPage />} />
+      <Route path='/bloodHelp' element={<BloodHelp/>} />
     </Routes>
   );
 }
