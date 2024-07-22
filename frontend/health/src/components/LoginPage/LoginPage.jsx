@@ -4,9 +4,12 @@ import './LoginPage.css';
 import { FaUser, FaLock } from "react-icons/fa";
 import axios from 'axios';
 
+
+export let currentValue = 0;
+
 export const LoginPage = () => {
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: ''
     });
 
@@ -19,17 +22,19 @@ export const LoginPage = () => {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        const { email, password } = formData;
+        const { username, password } = formData;
 
         try {
-            const response = await axios.post('http://localhost:8000/api/auth/login/', {
-                email,
+            const response = await axios.post('http://localhost:8000/login/', {
+                username,
                 password
             });
 
             if (response.status === 200) {
-                navigate('/'); // Navigate to the home page or any other page
+                currentValue = response.data.val
                 alert("Login successful!");
+                navigate('/'); // Navigate to the home page or any other page
+                
             }
         } catch (error) {
             console.error("There was an error logging in!", error);
@@ -44,11 +49,11 @@ export const LoginPage = () => {
                     <h1>Login</h1>
                     <div className='input-box'>
                         <input 
-                            type="email" 
-                            placeholder='E-mail' 
+                            type="username" 
+                            placeholder='username' 
                             required 
-                            name='email' 
-                            value={formData.email}
+                            name='username' 
+                            value={formData.username}
                             onChange={handleInputChange}
                         />
                         <FaUser className='icon'/>

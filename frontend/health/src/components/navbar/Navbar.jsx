@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-scroll";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import './navbar.css';
+import "./navbar.css";
+import { currentValue } from "../LoginPage/LoginPage";
+console.log(currentValue);
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
@@ -20,12 +22,13 @@ const Navbar = () => {
     setMenu(false);
   };
 
-  const closeForm = () => {
-    setShowForm(false);
-  };
+
+  const handleSubmit = () =>{
+    currentValue = 0;
+  }
 
   return (
-    <div className="fixed w-full z-10 text-white">
+    <div className=" w-full z-10 text-white">
       <div>
         <div className="flex flex-row justify-between p-5 md:px-32 px-5 bg-[#8dcebf] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
           <div className=" flex flex-row items-center cursor-pointer">
@@ -77,21 +80,29 @@ const Navbar = () => {
             <button>
               <a href="/connect">Connect</a>
             </button>
-            <button>
-              <a href="/login">Login</a>
-            </button>
+            {!currentValue ? (
+              <button>
+                <a href="/login">Login</a>
+              </button>
+            ) : (
+              <button>
+                <form onSubmit={handleSubmit}>
+                  <button type='submit'>Logout</button>
+                </form>
+              </button>
+            )}
+
             <button>
               <a href="/register">Register</a>
             </button>
           </nav>
 
           <div className="hidden lg:flex">
-            <a href="/video"><button
-              className="btn-grad-eme"
-              onClick={openForm}
-            >
-              Emergency Call
-            </button></a>
+            <a href="/video">
+              <button className="btn-grad-eme" onClick={openForm}>
+                Emergency Call
+              </button>
+            </a>
           </div>
 
           {/* {showForm && <Contact closeForm={closeForm} />} */}
@@ -160,22 +171,29 @@ const Navbar = () => {
             Blog
           </Link>
           <button>
-              <a href="/connect">Connect</a>
+            <a href="/connect">Connect</a>
           </button>
+          {!currentValue ? (
+              <button>
+                <a href="/login">Login</a>
+              </button>
+            ) : (
+              <button>
+                <form onSubmit={handleSubmit}>
+                <button type='submit' >Logout</button>
+                </form>
+              </button>
+            )}
           <button>
-              <a href="/login">Login</a>
-          </button>
-          <button>
-              <a href="/register">Register</a>
+            <a href="/register">Register</a>
           </button>
 
           <div className=" lg:hidden">
-            <a href="/video"><button
-              className="btn-grad-eme"
-              onClick={openForm}
-            >
-              Emergency Call
-            </button></a>
+            <a href="/video">
+              <button className="btn-grad-eme" onClick={openForm}>
+                Emergency Call
+              </button>
+            </a>
           </div>
         </div>
       </div>
