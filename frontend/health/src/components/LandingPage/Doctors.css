@@ -1,0 +1,9 @@
+.centering {
+    justify-content: center;
+    align-items: center;
+
+}
+
+.centering a button{
+    padding-bottom: 3rem;
+}

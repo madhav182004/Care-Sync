@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth',
     'dj_rest_auth.registration',
+    'app',
+    'django_crontab'
 ]
 
 SITE_ID = 1
@@ -109,7 +111,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "NAME": 'caresync',
         "USER": 'root',
-        "PASSWORD": '##654(ZS@ZNM#94*?shqk0?',
+        "PASSWORD": DATABASE_PASSWORD,
         "HOST": '127.0.0.1',
         "PORT": '3306'
     }
@@ -187,3 +189,7 @@ EMAIL_HOST_USER = 'healthhq247@gmail.com'
 EMAIL_HOST_PASSWORD = 'xdhs lhwo quhq crba'
 DEFAULT_FROM_EMAIL = 'healthhq247@gmail.com'
 ADMIN_EMAILS = ['syedzubair4unib@gmail.com','madhavmundhra221@gmail.com','himanshuks062@gmail.com','abhishekrajranchi2004@gmail.com'],
+
+
+
+API_KEY = '579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b'

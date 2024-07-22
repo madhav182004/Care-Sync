@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import './Doctors.css'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,32 +16,32 @@ const Doctors = () => {
   const data = [
     {
       img: image1,
-      name: "Dr. Serena Mitchell",
+      name: "Dr. Navin Reddy",
       specialties: "Orthopedic Surgeon",
     },
     {
       img: image2,
-      name: "Dr. Julian Bennett",
+      name: "Dr. Sushant Chopra",
       specialties: "Cardiologist",
     },
     {
       img: image3,
-      name: "Dr. Camila Rodriguez",
+      name: "Dr. Himanshu Singh & Dr. Abhishek Raj",
       specialties: "Pediatrician",
     },
     {
       img: image4,
-      name: "Dr. Victor Nguyen",
+      name: "Dr. Anil Kumar",
       specialties: "Neurologist",
     },
     {
       img: image5,
-      name: "Dr. Ethan Carter",
+      name: "Dr. Neha Kakkar",
       specialties: "Dermatologist",
     },
     {
       img: image6,
-      name: "Dr. Olivia Martinez",
+      name: "Dr. Chinnaswamy Hegde",
       specialties: "Ophthalmologist",
     },
   ];
@@ -92,8 +93,7 @@ const Doctors = () => {
             Our Doctors
           </h1>
           <p className=" mt-2 text-center lg:text-start">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus,
-            quidem.
+            Meet our well experienced doctors who are specialized in their specific domain
           </p>
         </div>
         <div className="flex gap-5 mt-4 lg:mt-0">
@@ -134,7 +134,7 @@ const Doctors = () => {
           ))}
         </Slider>
       </div>
-      <div className="btn-grad flex justify-center items-center">
+      <div className="btn-grad flex justify-center items-center Centering">
           <a href="/doctorform"><button>Join As Doctor!</button></a>
       </div>
     </div>

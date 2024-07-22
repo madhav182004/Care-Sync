@@ -25,9 +25,10 @@ reportWebVitals();
 
 // chatbot
 
+
     (function(d, m){
         var kommunicateSettings = 
-            {"appId":"19c6eaee5f0bb5b29d7536675e173bd3b","popupWidget":true,"automaticChatOpenOnNavigation":true};
+            {"appId":"2678007b891b3f68060e91f4edb17b864","popupWidget":true,"automaticChatOpenOnNavigation":true};
         var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
         s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
         var h = document.getElementsByTagName("head")[0]; h.appendChild(s);

@@ -64,9 +64,9 @@ export const Connect = () => {
                     <div className='input-box'>
                         <input id="specialization" type="text" placeholder='Which specialized Doctor do you need?' required />
                     </div>
-                    <button type='submit'>SEND</button>
+                    <button id='RequestForUserButton' type='submit'>SEND</button>
                 </form>
-                {message && <h1>{message}</h1>}
+                {message && <h1 >{message}</h1>}
             </div>
         </div>
     );

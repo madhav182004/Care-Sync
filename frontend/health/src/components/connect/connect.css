@@ -88,8 +88,8 @@
     text-decoration: underline;
 }
 
-button {
-    background-color: #4CAF50; /* Green background */
+#RequestForUserButton {
+    background-color: rgb(21, 210, 231); /* Green background */
     border: none; /* Remove borders */
     color: white; /* White text */
     padding: 15px 32px; /* Some padding */
@@ -102,8 +102,8 @@ button {
     cursor: pointer; /* Add a pointer cursor on mouse-over */
 }
 
-button:hover {
-    background-color: rgb(21, 210, 231); /* White background */
+#RequestForUserButton:hover {
+    background-color: #4CAF50; /* White background */
     color: black; /* Black text */
-    border: 2px solid #4CAF50; /* Green border */
+    border: 2px solid #ffffff; /* Green border */
 }
