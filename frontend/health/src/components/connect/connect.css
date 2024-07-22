@@ -87,3 +87,23 @@
 .register-link p a:hover{
     text-decoration: underline;
 }
+
+button {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 15px 32px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Get the element to line up properly */
+    font-size: 16px; /* Increase font size */
+    margin: 4px 2px; /* Some margin */
+    transition-duration: 0.4s; /* Make the changes take place gradually */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+}
+
+button:hover {
+    background-color: rgb(21, 210, 231); /* White background */
+    color: black; /* Black text */
+    border: 2px solid #4CAF50; /* Green border */
+}
