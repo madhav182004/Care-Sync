@@ -5,24 +5,30 @@ import './docquestion.css';
 import axios from 'axios';
 
 const questions = [
-    { question: 'What is your full name?', questionType: 'text', id:'fullnameOfDoctor' },
-    { question: 'Enter your Date your Age', questionType: 'number', id:'ageOfDoctor' },
-    { question: 'What is your sex?', questionType: 'options1', options: ['Male', 'Female', 'Other'], id:'genderOfDoctor' },
-    { question: 'Your Blood Group?', questionType: 'text', id:'bloodGroupOfDoctor' },
-    { question: 'Enter your Phone Number', questionType: 'number', id:'phNoOfDoctor' },
-    { question: 'Enter your Adhaar Card Number', questionType: 'number', id:'AdharNoOfDoctor' },
-    { question: 'Enter Medical Licence Number', questionType: 'text', id:'MedicalNumber' },
-    { question: 'Specialization?', questionType: 'text', id:'specialization' },
-    { question: 'What is your food preference?', questionType: 'text', id:'foodPreOfDoctor' },
-    { question: 'Years Of Experience', questionType: 'number', id:'yoe'},
+    { question: 'What is your full name?', questionType: 'text', id: 'fullnameOfDoctor' },
+    { question: 'Enter your Age', questionType: 'number', id: 'ageOfDoctor' },
+    { question: 'What is your sex?', questionType: 'options1', options: ['Male', 'Female', 'Other'], id: 'genderOfDoctor' },
+    { question: 'Your Blood Group?', questionType: 'text', id: 'bloodGroupOfDoctor' },
+    { question: 'Enter your Phone Number', questionType: 'number', id: 'phNoOfDoctor' },
+    { question: 'Enter your Adhaar Card Number', questionType: 'number', id: 'AdharNoOfDoctor' },
+    { question: 'Enter Medical Licence Number', questionType: 'text', id: 'MedicalNumber' },
+    { question: 'Specialization?', questionType: 'text', id: 'specialization' },
+    { question: 'What is your food preference?', questionType: 'text', id: 'foodPreOfDoctor' },
+    { question: 'Years Of Experience', questionType: 'number', id: 'yoe' },
 ];
 
 const DoctorForm = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const [answers, setAnswers] = useState({});
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const handleNextQuestion = (answer, id) => {
+        if (!answer) {
+            setErrorMessage('Please fill in the required field.');
+            return;
+        }
+        setErrorMessage('');
         setAnswers(prevAnswers => ({ ...prevAnswers, [id]: answer }));
         setCurrentPage(currentPage + 1);
     };
@@ -30,10 +36,8 @@ const DoctorForm = () => {
     const handleSubmit = async () => {
         try {
             const response = await axios.post('http://localhost:8000/submit_doctor_details/', answers);
-
             if (response.status === 201) {
-                // Navigate to the home page if the API call is successful
-                alert('Details form submitted successfully👍')
+                alert('Details form submitted successfully👍');
                 navigate('/');
             } else {
                 alert('Failed to submit your details.😶‍🌫️');
@@ -61,6 +65,7 @@ const DoctorForm = () => {
                     <button onClick={handleSubmit}>Submit</button>
                 </>
             )}
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
     );
 };

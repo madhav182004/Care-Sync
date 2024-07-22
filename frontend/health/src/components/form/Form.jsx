@@ -6,21 +6,22 @@ import './question.css';
 
 const questions = [
     { question: 'What is your full name?', questionType: 'text', id: 'fullnameOfUser' },
-    { question: 'What is your age?', questionType: 'text', id: 'ageOfUser' },
+    { question: 'What is your age?', questionType: 'number', id: 'ageOfUser' },
     { question: 'What is your sex?', questionType: 'options1', options: ['Male', 'Female', 'Other'], id: 'genderOfUser' },
-    { question: 'What is your phone number?', questionType: 'text', id: 'phNoOfUser' },
+    { question: 'What is your phone number?', questionType: 'number', id: 'phNoOfUser' },
     { question: 'Your current medications?', questionType: 'text', id: 'CurrentMedications' },
     { question: 'Do you have any allergies? If so, please write them down?', questionType: 'text', id: 'anyAllergies' },
     { question: 'Your past medications?', questionType: 'text', id: 'pastMedications' },
     { question: 'Your Blood Group?', questionType: 'text', id: 'BloodGroupOfUser' },
     { question: 'Your recent test details?', questionType: 'text', id: 'recentTestDetails' },
     { question: 'What is your food preference?', questionType: 'text', id: 'FoodPreOfUser' },
-    { question: 'What is your address?', questionType: 'text', id: 'addressOfUser' }
+    { question: 'What is your address?', questionType: 'text', id: 'addressOfUser' },
 ];
 
 const Form = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const [answers, setAnswers] = useState({});
+    const [isSubmitted, setIsSubmitted] = useState(false); // State to track submission status
     const navigate = useNavigate();
 
     const handleNextQuestion = (answer, id) => {
@@ -33,13 +34,14 @@ const Form = () => {
             const response = await axios.post('http://localhost:8000/submit_user_details/', answers);
             if (response.status === 201) {
                 alert('Details form submitted successfully👍');
+                setIsSubmitted(true); // Update submission status
                 navigate('/');
             } else {
                 alert('Failed to submit your details.😶‍🌫️');
             }
         } catch (error) {
             console.error('Error submitting user details:', error);
-            alert('An error occurred while submitting the user details.', error);
+            alert('An error occurred while submitting the user details. Please fill the form again', error);
         }
     };
 
@@ -62,7 +64,9 @@ const Form = () => {
                     />
                 </form>
             ) : (
-                <button onClick={handleSubmit}>Submit?</button>
+                !isSubmitted && ( // Conditionally render the button based on submission status
+                    <button onClick={handleSubmit}>Submit?</button>
+                )
             )}
         </div>
     );
