@@ -35,8 +35,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth',
     'dj_rest_auth.registration',
-    'app',
-    'django_crontab'
 ]
 
 SITE_ID = 1
@@ -192,4 +190,3 @@ ADMIN_EMAILS = ['syedzubair4unib@gmail.com','madhavmundhra221@gmail.com','himans
 
 
 
-API_KEY = '579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b'
