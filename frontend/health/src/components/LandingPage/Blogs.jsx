@@ -17,8 +17,7 @@ const Blogs = () => {
             Latest Post
           </h1>
           <p className=" mt-2 text-center lg:text-start">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus,
-            quidem.
+          Explore essential tips for maintaining a healthy lifestyle, including balanced diets, regular exercise
           </p>
         </div>
         <div className=" mt-4 lg:mt-0">

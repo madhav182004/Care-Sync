@@ -9,10 +9,7 @@ const Home = () => {
           Empowering Health Choices for a Vibrant Life Your Trusted..
         </h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam magnam
-          omnis natus accusantium quos. Reprehenderit incidunt expedita
-          molestiae impedit at sequi dolorem iste sit culpa, optio voluptates
-          fugiat vero consequatur?
+        Our mission is to empower you with knowledge and tools to make informed health decisions. We believe that informed individuals are healthier individuals, and our blog is designed to provide you with the information you need to live a healthier life.
         </p>
         <a href="/form" className="btn-grad"><button>Fill Your Bio</button></a>
       </div>

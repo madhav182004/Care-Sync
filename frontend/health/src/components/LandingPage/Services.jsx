@@ -22,8 +22,7 @@ const Services = () => {
             Our Services
           </h1>
           <p className=" mt-2 text-center lg:text-start">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus,
-            quidem.
+          we offer a comprehensive range of services designed to support your health and well-being.
           </p>
         </div>
         <div className=" mt-4 lg:mt-0">
