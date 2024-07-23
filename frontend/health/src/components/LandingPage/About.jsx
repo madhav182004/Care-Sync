@@ -7,12 +7,12 @@ const About = () => {
       <div className=" w-full lg:w-3/4 space-y-4">
         <h1 className=" text-4xl font-semibold text-center lg:text-start">About Us</h1>
         <p className=" text-justify lg:text-start">
-        Health HQ provides information on managing allergies, detailing types and treatments such as avoidance, medication, and immunotherapy. 
+        Care Sync provides information on managing allergies, detailing types and treatments such as avoidance, medication, and immunotherapy. 
         It highlights the benefits and processes of online consultations for convenient healthcare access. 
         It also addresses doctor unemployment causes and solutions, including telemedicine and policy changes to better distribute medical professionals.
         </p>
         <p className="text-justify lg:text-start">
-        Moreover, Health HQ sheds light on the convenience and accessibility of online consultations, 
+        Moreover, Care Sync sheds light on the convenience and accessibility of online consultations, 
         underscoring the significance of remote healthcare access. By outlining the process of scheduling 
         appointments and conducting consultations via video calls, phone calls, or secure messaging platforms, 
         it empowers individuals to seek medical advice from the comfort of their homes. This accessibility is 
