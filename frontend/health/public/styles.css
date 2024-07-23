@@ -1,10 +1,4 @@
 .translate{
-<<<<<<< HEAD
-    background-color: #8dcebf;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-=======
     display: flex;
     justify-content: center;
     background-color: #8dcebf;
@@ -12,5 +6,4 @@
     z-index: 20;
     /* width: 4rem; */
     scale: 0.6;
->>>>>>> 606242bc5fd6f65344a380922c59a932fbee2db5
 }
