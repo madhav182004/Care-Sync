@@ -2,6 +2,7 @@
     width: 100vw;
     height: 100vh;
     background: url('../../assets/images/connect.jpeg');
+    background-size: cover;
     display: flex;
     flex-direction: row;
     justify-content: center;

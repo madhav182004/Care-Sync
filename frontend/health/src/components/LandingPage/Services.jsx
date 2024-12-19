@@ -31,7 +31,7 @@ const Services = () => {
       </div>
       <div className=" flex flex-col lg:flex-row gap-5 pt-14">
         <ServicesCard icon={icon2} title="One to one video call with doctors" desc="One-to-one video calls with doctors offer convenient access to healthcare from home, reducing travel and wait times."/>
-        <ServicesCard icon={icon1} title="Machine Learning  skin disease detection" desc="Machine learning skin disease detection utilizes algorithms trained on vast datasets to accurately identify various skin conditions from images, aiding in early diagnosis and treatment recommendations."/>
+        <ServicesCard icon={icon1} title="Chatbot Assistance" desc="A chatbot to assist you with all the basic need and also helps a lot in emergency situations."/>
         <ServicesCard icon={icon3} title="Village connect" desc="Village Connect facilitates rural residents access to medical consultations by connecting them with doctors remotely, improving healthcare accessibility in underserved areas."/>
       </div>
     </div>

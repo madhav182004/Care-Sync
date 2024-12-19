@@ -102,14 +102,12 @@ WSGI_APPLICATION = 'HealthHQ.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-DATABASE_PASSWORD = os.environ.get('MYSQL_PASSWORD')
-
 DATABASES = {
      "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": 'caresync',
         "USER": 'root',
-        "PASSWORD": DATABASE_PASSWORD,
+        "PASSWORD": 'madhav3201',
         "HOST": '127.0.0.1',
         "PORT": '3306'
     }

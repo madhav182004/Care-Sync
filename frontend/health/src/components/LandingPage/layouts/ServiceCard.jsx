@@ -10,10 +10,6 @@ const ServicesCard = ({ icon, title, desc }) => {
       <p>
         {desc}
       </p>
-
-      {/* <h3 className=" text-backgroundColor cursor-pointer hover:text-[#ade9dc] transition duration-300 ease-in-out">
-        Learn more
-      </h3> */}
     </div>
   );
 };
