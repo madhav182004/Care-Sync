@@ -97,8 +97,5 @@ Contributions are welcome! Please follow the steps below:
 5. Open a pull request.
 
 
----
-
-Thank you for visiting CareSync! We hope you find this project helpful and engaging.
 
 
